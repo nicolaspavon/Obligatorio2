@@ -2,7 +2,7 @@ import json
 import requests
 from datetime import date, timedelta
 
-
+#Se utilizara para el buscador
 #Con esta funcion se crea un diccionario a partir de los datos que brinda la pagina OMDB
 def detallesPelis(nombre):
     
@@ -62,6 +62,52 @@ def DatosPelis(nroSala):
     return datos
     #aca lo hice como que devuelva solo todo el texto , pero es ccuestion de modificar eso para que devuelva solo para un complejo y ta 
 
+
+#Cartelera de peliculas del dia de hoy, por numero de imbdID
+def CarteleraActual():
+
+    hoy = date.today()
+    peliculas = open("salas.csv")
+    cartelera=[]
+    for linea in peliculas:
+        lineaSinError = linea.strip("\n")
+        lista = lineaSinError.split(",")
+        if VerificarTiempo(lista[2],lista[3],hoy) == True:
+            cartelera.append(lista[1])
+    return catelera
+
+
+#Datos de 1 pelicula en cartelera        
+def DatosPelicula(imbdID):
+
+    data = requests.get("http://www.omdbapi.com/?apikey=a2d2e50e&i="+imbdID)
+    dicc = json.load(data) #Se deserializan los datos convirtiendolos en diccionario
+    return dicc
+
+#Datos de toda la cartelera a partir de numero de imbdID
+def DatosCartelera(imbdIDLista):
+
+    lista=[]
+    for imbdID in imbdIDLista:
+        lista.append(DatosPelicula(imbdID))
+    return lista
+
+        
+#Relacionando
+def asignacion():
+    
+    lista=CarteleraActual()
+    listaDeDicc=DatosCartelera(lista)
+    return listaDeDicc
+
+#Devolviendo lo que se precisa para la web, URL imagen y titulo
+def ImagenTitulo(dicc):
+
+    URL=dicc.get("Poster")
+    Titulo=dicc.get("Title")
+    return URL, Titutlo
+    
+    
                        
 ###Lista de los nombres de peliculas que luego se cargaran a un archivo .csv
 ##NombrePelis=["Back to the future", "Titanic", "Freaky Friday", "Inception", "Midnight in Paris", "Irrational man", "Coco"]
