@@ -20,10 +20,8 @@ def VerificarTiempo(fechaEstreno, fechaFin, fechaActual):
     
     fechaInicio = fechaEstreno.split("/")
     fechaFinal = fechaFin.split("/")
-    fechaHoy = fechaActual.split("/")
     inicio = date(fechaInicio[2], fechaInicio[1], fechaInicio[0])
     fin = date(fechaFin[2], fechaFin[1], fechaFin[0])
-    hoy = date(fechaActual[2], fechaActual[1], fechaActual[0])
     return hoy - inicio < fin - inicio
     
 
@@ -42,9 +40,11 @@ def BuscarPeli(nombre):
             if lista[1] == numero:
                 inicio = lista[2]
                 fin = lista[3]
-                if VerificarTiempo(inicio, fin,hoy)==True
+                if VerificarTiempo(inicio, fin,hoy)==True:
                     nroSala.append(lista[1]) #Se agrega a la lista el Nro de Sala en el cual se proyecta la pelicula
         cartelera.close()
+     if nroSala==[]:
+        nroSala="La película no se encuentra en cartelera"
     return nroSala
 
 #Datos de pelicula en salas
@@ -58,8 +58,6 @@ def DatosPelis(nroSala):
         if nroSala == lista[0]:
             datos = datos + "El complejo en que que se proyecta es " + lista[1] + ", la direccion es " + lista[2] + "el telefono es " + lista[3] + "\n"
     salas.close()
-    if datos=="":
-        datos="La película no se encuentra en cartelera"
     return datos
     #aca lo hice como que devuelva solo todo el texto , pero es ccuestion de modificar eso para que devuelva solo para un complejo y ta 
 
