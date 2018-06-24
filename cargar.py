@@ -1,5 +1,5 @@
 import json
-import request
+import requests
 from datetime import date, timedelta
 
 
@@ -10,7 +10,7 @@ def detallesPelis(nombre):
     direccion = str(nombrePeli[0])
     for i in range(len(nombrePeli)-1):
         direccion = direccion+"%20"+nombrePeli[i+1]
-    data = request.get("http://www.omdbapi.com/?apikey=a2d2e50e&t="+direccion)
+    data = requests.get("http://www.omdbapi.com/?apikey=a2d2e50e&t="+direccion)
     dicc = json.load(data) #Se deserializan los datos convirtiendolos en diccionario
     return dicc
 
