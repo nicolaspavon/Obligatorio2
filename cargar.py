@@ -58,6 +58,8 @@ def DatosPelis(nroSala):
         if nroSala == lista[0]:
             datos = datos + "El complejo en que que se proyecta es " + lista[1] + ", la direccion es " + lista[2] + "el telefono es " + lista[3] + "\n"
     salas.close()
+    if datos=="":
+        datos="La película no se encuentra en cartelera"
     return datos
     #aca lo hice como que devuelva solo todo el texto , pero es ccuestion de modificar eso para que devuelva solo para un complejo y ta 
 
