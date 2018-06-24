@@ -43,8 +43,6 @@ def BuscarPeli(nombre):
                 if VerificarTiempo(inicio, fin,hoy)==True:
                     nroSala.append(lista[1]) #Se agrega a la lista el Nro de Sala en el cual se proyecta la pelicula
         cartelera.close()
-     if nroSala==[]:
-        nroSala="La película no se encuentra en cartelera"
     return nroSala
 
 #Datos de pelicula en salas
@@ -52,11 +50,14 @@ def DatosPelis(nroSala):
     
     salas = open("salas.csv","r")
     datos = ""
-    for linea in salas:
-        lineaSinError = linea.strip("\n")
-        lista = lineaSinError.split(",")
-        if nroSala == lista[0]:
-            datos = datos + "El complejo en que que se proyecta es " + lista[1] + ", la direccion es " + lista[2] + "el telefono es " + lista[3] + "\n"
+    if nroSala==[]:
+        datos="La película no se encuentra en cartelera"
+    else:
+        for linea in salas:
+            lineaSinError = linea.strip("\n")
+            lista = lineaSinError.split(",")
+            if nroSala == lista[0]:
+                datos = datos + "El complejo en que que se proyecta es " + lista[1] + ", la direccion es " + lista[2] + "el telefono es " + lista[3] + "\n"
     salas.close()
     return datos
     #aca lo hice como que devuelva solo todo el texto , pero es ccuestion de modificar eso para que devuelva solo para un complejo y ta 
