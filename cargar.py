@@ -22,7 +22,7 @@ def VerificarTiempo(fechaEstreno, fechaFin, fechaActual):
     fechaFinal = fechaFin.split("/")
     inicio = date(fechaInicio[2], fechaInicio[1], fechaInicio[0])
     fin = date(fechaFin[2], fechaFin[1], fechaFin[0])
-    return hoy - inicio < fin - inicio
+    return (hoy - inicio < timedelta(0)) and (hoy - inicio < fin - inicio)
     
 
 #Buscar si la pelicula consultada se esta proyectando en el cine y devolver numero de sala
