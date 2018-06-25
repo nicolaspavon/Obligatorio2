@@ -87,7 +87,7 @@ def DatosPelicula(imbdID):
 #Datos de toda la cartelera a partir de numero de imbdID
 def DatosCartelera(imbdIDLista):
 
-    lista=[]
+    lista = []
     for imbdID in imbdIDLista:
         lista.append(DatosPelicula(imbdID))
     return lista
@@ -96,15 +96,15 @@ def DatosCartelera(imbdIDLista):
 #Relacionando
 def asignacion():
     
-    lista=CarteleraActual()
-    listaDeDicc=DatosCartelera(lista)
+    lista = CarteleraActual()
+    listaDeDicc = DatosCartelera(lista)
     return listaDeDicc
 
 #Devolviendo lo que se precisa para la web, URL imagen y titulo
 def ImagenTitulo(dicc):
 
-    URL=dicc.get("Poster")
-    Titulo=dicc.get("Title")
+    URL = dicc.get("Poster")
+    Titulo = dicc.get("Title")
     return URL, Titutlo
     
     
