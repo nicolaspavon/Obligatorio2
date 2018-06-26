@@ -2,7 +2,7 @@ from datetime import date, timedelta
 import cargar
 def cargarHtml():
     print("GENERANDO HTML")
-    arch=open("../arch.txt","w")
+    arch=open("cgi-data/arch.txt","w")
     arch.write("""<html>
      <head>
       <title>CINES LTDA</title>

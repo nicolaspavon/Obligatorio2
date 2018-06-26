@@ -33,7 +33,7 @@ def BuscarPeli(nombre):
     nroSala = []
     hoy = date.today()
     if numero!="Not found":
-        cartelera = open("carteleras.csv","r")
+        cartelera = open("cgi-data/carteleras.csv","r")
         for linea in cartelera:
             lineaSinError = linea.strip("\n")
             lista = lineaSinError.split(",")
@@ -48,7 +48,7 @@ def BuscarPeli(nombre):
 #Datos de pelicula en salas
 def DatosPelis(nroSala):
     
-    salas = open("salas.csv","r")
+    salas = open("cgi-data/salas.csv","r")
     datos = ""
     if nroSala==[]:
         datos="La película no se encuentra en cartelera"
@@ -67,7 +67,7 @@ def DatosPelis(nroSala):
 def CarteleraActual():
 
     hoy = date.today()
-    peliculas = open("carteleras.csv","r")
+    peliculas = open("cgi-data/carteleras.csv","r")
     cartelera=[]
     for linea in peliculas:
         lineaSinError = linea.strip("\n")
