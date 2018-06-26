@@ -67,7 +67,7 @@ def DatosPelis(nroSala):
 def CarteleraActual():
 
     hoy = date.today()
-    peliculas = open("carteleras.csv")
+    peliculas = open("carteleras.csv","r")
     cartelera=[]
     for linea in peliculas:
         lineaSinError = linea.strip("\n")

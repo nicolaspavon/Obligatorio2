@@ -1,7 +1,9 @@
 import cgi, cgitb
+import intentando
 cgitb.enable() # Nos permite ver errores
 
-html = r"prueba.txt"
+intentando.cargarHtml()
+html = r"arch.txt"
 pagina = open(html)
 for linea in pagina:
     print(linea)
