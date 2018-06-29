@@ -1,0 +1,6 @@
+ejecutar el cmd y ejecutar el comando
+C:\Users\estudiante.fit\Desktop\Obligatorio2-master>python.exe -m http.server --cgi 8080
+
+(obligatorio 2 master es la carpeta en la que esta ESTE MANUAL)
+
+LUEGO IR A http://localhost:8080/cgi-bin/Servidor1.py
